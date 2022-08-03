@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from miapp import views
+from miapp.models import Producto
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.inicio, name="inicioPagina"),
     path('inicio/', views.inicio, name = "inicio"),
     path('integrantes/', views.integrantes, name = "integrantes"),
-    path('proucto/', views.crearProducto, name= "producto"),
+    path('producto/', views.crearProducto, name= "producto"),
     path('curso/',views.crearCurso, name="curso"),
 ]

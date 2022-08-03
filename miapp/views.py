@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, HttpResponse
 from miapp import models
+from miapp.models import Producto
 
 # Create your views here.
 layout = """"""
@@ -19,9 +20,20 @@ def inicio(request):
     })
 
 def crearProducto(request):
-    return render(request, 'crearProductos.html' ,{
-
-    })
+    producto = Producto(
+                        codigo = "54551544",
+                        nombre = "Pedro",
+                        precio_compra = 40.70,
+                        precio_venta = 50.50,
+                        Fecha_compra = "2022-08-03",
+                        Fecha_registro = True,
+                        estado = "A"
+ )
+    producto.save()
+    return HttpResponse (f"<h1>Producto registrado:</h1> "+
+    f"<br> <b>Código:</b> {producto.codigo} <br> <b>Nombre:</b> {producto.nombre} <br> <b>Precio de Compra:</b> {producto.precio_compra} <br> "+
+    f"<b>Precio de venta:</b> {producto.precio_venta} <br> <b>Fecha de Compra:</b> {producto.Fecha_compra} <br><b>Fecha de Registro:</b> "+
+    f" {producto.Fecha_registro} <br> <b>Estado:</b> {producto.estado}")
 
 def crearCurso(request):
     return render(request, 'crearCursos.html' ,{
